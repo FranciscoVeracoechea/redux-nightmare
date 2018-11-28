@@ -14,14 +14,14 @@ var START = '/START';
 var SUCCESS = '/SUCCESS';
 var ERROR = '/ERROR';
 
-var start = function start(action) {
+function start(action) {
   return {
     type: '' + action.type + START,
     data: action.ajax.data
   };
 };
 
-var success = function success(action, payload) {
+function success(action, payload) {
   return {
     type: '' + action.type + SUCCESS,
     payload: payload,
@@ -29,7 +29,7 @@ var success = function success(action, payload) {
   };
 };
 
-var catchError = function catchError(action, payload) {
+function catchError(action, payload) {
   return {
     type: '' + action.type + ERROR,
     payload: payload,
