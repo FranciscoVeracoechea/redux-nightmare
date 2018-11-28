@@ -1,0 +1,33 @@
+{
+  "name": "redux-nightmare",
+  "version": "0.1.0",
+  "description": "Redux middleware for abortable ajax requests without side effects",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoVeracoechea/redux-nightmare.git"
+  },
+  "keywords": [
+    "redux",
+    "middleware",
+    "ajax",
+    "abortable",
+    "no-side-effects",
+    "redux-middleware"
+  ],
+  "author": "Francisco Veracoechea <veracoecheafrancisco@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FranciscoVeracoechea/redux-nightmare/issues"
+  },
+  "homepage": "https://github.com/FranciscoVeracoechea/redux-nightmare#readme",
+  "dependencies": {
+    "ajax-nightmare": "^1.0.14"
+  }
+}
