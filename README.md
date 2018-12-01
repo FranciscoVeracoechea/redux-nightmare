@@ -3,7 +3,19 @@ Redux middleware for abortable ajax requests without side effects
 
 ## Get Start
     npm install --save redux-nightmare
+## Installation
+  Then, to enable Redux Nightmare, use applyMiddleware():
+```js
+import { createStore, applyMiddleware } from 'redux';
+import reduxNightmare from 'redux-nightmare';
+import rootReducer from './reducers/index';
 
+// Note: this API requires redux@>=3.1.0
+const store = createStore(
+  rootReducer,
+  applyMiddleware(reduxNightmare)
+);
+```
 ## Usage
 #### ExampleActions.js
 the ajax object needs 2 properties "route" and "options" which must have the same characteristics as the constructor parameters of the [ajax-nightmare](https://www.npmjs.com/package/ajax-nightmare) interfaces
