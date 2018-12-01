@@ -1,6 +1,6 @@
 {
   "name": "redux-nightmare",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Redux middleware for abortable ajax requests without side effects",
   "main": "dist/index.js",
   "directories": {

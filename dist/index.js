@@ -14,14 +14,14 @@ var START = '/START';
 var SUCCESS = '/SUCCESS';
 var ERROR = '/ERROR';
 
-function start(action) {
+var start = function start(action) {
   return {
     type: '' + action.type + START,
     data: action.ajax.data
   };
 };
 
-function success(action, payload) {
+var success = function success(action, payload) {
   return {
     type: '' + action.type + SUCCESS,
     payload: payload,
@@ -29,7 +29,7 @@ function success(action, payload) {
   };
 };
 
-function catchError(action, payload) {
+var catchError = function catchError(action, payload) {
   return {
     type: '' + action.type + ERROR,
     payload: payload,
@@ -37,23 +37,27 @@ function catchError(action, payload) {
   };
 };
 
-var reduxNightmare = function reduxNightmare(_ref) {
-  var dispatch = _ref.dispatch;
+exports.default = function (store) {
   return function (next) {
     return function (action) {
+      var dispatch = store.dispatch;
+
       if (!Object.prototype.hasOwnProperty.call(action, 'ajax')) {
         return next(action);
       }
       dispatch(start(action));
       var request = _ajaxNightmare2.default.make(action.ajax.route, action.ajax.options);
-      request.result().then(function (response) {
-        return dispatch(success(action, response));
-      }).catch(function (error) {
-        return dispatch(catchError(action, error));
+      var promise = request.result().then(function (response) {
+        dispatch(success(action, response));
+        return response;
+      }, function (error) {
+        dispatch(catchError(action, error));
+        throw error;
       });
+      request.result = function () {
+        return promise;
+      };
       return request;
     };
   };
 };
-
-exports.default = reduxNightmare;
